@@ -1,0 +1,28 @@
+<p>
+  <b>Title:</b>
+  <%=h @item.title %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%=h @item.date %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%=h @item.amount %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @item.note %>
+</p>
+
+<p>
+  <b>Created By:</b>
+  <%=h @item.user.login %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
