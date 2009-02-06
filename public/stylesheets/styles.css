@@ -4,14 +4,14 @@ body
 	font-size: 10px;
 	text-align: left;
 	color: #424242;
-	background-color: #efefef;
+	background: url(/images/background.png);
 }
 
 input
 {
 	color: #e5eaed;
 	border: 1px solid #336300;
-	background-color: #7c7e7a;
+	background-image: url(/images/input.png);
 }
 
 .submit input
@@ -43,6 +43,7 @@ h2
 	font-size: 18px;
 	color: #b8b8b8;
 	font-style: italic;
+	font-variant: small-caps;
 }
 
 p
