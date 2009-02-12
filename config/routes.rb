@@ -52,5 +52,5 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 
-  map.items '/', :controller => 'items', :actions => 'show'
+  map.connect '/', :controller => 'items'
 end
