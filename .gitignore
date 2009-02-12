@@ -1,1 +1,14 @@
-*.sqlite3
+*~
+*.cache
+*.pid
+*.log
+*.swp
+tmp/**/*
+log/**/*
+.DS\_Store
+db/cstore/**
+coverage/*
+db/*.sqlite3
+*.tmproj
+Capfile
+
