@@ -8,6 +8,7 @@
 	    <th>Title</th>
 	    <th>Date</th>
 	    <th>Amount</th>
+		<th>Type</th>
 	    <th>Note</th>
 	  </tr>
 
@@ -16,6 +17,7 @@
 		<td><%=h item.date %></td>    
 		<td><%=h item.title %></td>
 	    <td><%=h item.amount %></td>
+		<td><%=h item.type.name %></td>
 	    <td><%=h item.note %></td>
 	    <td><%= link_to 'Show', item %></td>
 		
