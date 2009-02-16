@@ -1,22 +1,18 @@
-<h1>New item</h1>
+<div class="NewItems"><h1>New item</h1>
 
 <% form_for(@item) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
-  </p>
-  <p>
-    <%= f.label :amount %><br />
+    <%= f.label :amount %>
     <%= f.text_field :amount %>
   </p>
   <p>
-    <%= f.label :type %><br />
+    <%= f.label :type %>
     <%= f.select :type_id, Type.all.collect{|t| [t.name, t.id]} %>
   </p>
   <p>
@@ -24,8 +20,11 @@
     <%= f.text_area :note %>
   </p>
   <p>
+    <%= f.date_select :date %>
+  </p>
+  <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
 
-<%= link_to 'Back', items_path %>
+<%= link_to 'Back', items_path %></div>

@@ -1,7 +1,7 @@
 
 body 
 {
-	font-family: verdana, helvetica, arial, sans-serif;
+	font-family: trajan pro, verdana, helvetica, arial, sans-serif;
 	font-size: 10px;
 	text-align: left;
 	color: #424242;
@@ -10,16 +10,24 @@ body
 
 input
 {
-	color: #000000;
-	border: 1px solid #000000;
-	background-image: url(/images/input.png);
+	color: gray;
+	background-image: none;
+	border: 1px double gray;
+	font-family: trajan pro, verdana, helvetica, sans-serif;
+	font-size: 10px;
+	background-color: #ececec;
+	position: absolute;
+	right: 2px;
 }
 
-.submit input
+input.submit
 {
-	color: #a6a6a6;
-	border: 4px solid #091800;
-	background-color: #646560;
+	color: white;
+	border: 0 solid;
+	font: italic bold 10px "Trajan Pro";
+	opacity: 0;
+	width: 98%;
+	background-color: #898989;
 }
 	
 a:link 
@@ -34,7 +42,7 @@ a:link
 h1 
 {
 	font-size: 20px;
-	color: #b8b8b8;
+	color: gray;
 	font-weight: bold;
 	font-style: italic;
 }
@@ -42,7 +50,7 @@ h1
 h2 
 {
 	font-size: 18px;
-	color: #b8b8b8;
+	color: gray;
 	font-style: italic;
 	font-variant: small-caps;
 }
@@ -58,18 +66,47 @@ table
 	border: 1px dashed #d4d4d4;
 }
 
-div.login_pane
+div.Login
 {
 	color: gray;
-	background-color: silver;
 	position: fixed;
 	z-index: 1;
 	font-weight: bold;
-	font-size: 12px;
-	width: 200px;
-	height: 200px;
-	padding: 3px;
+	font-size: 10px;
+	width: 230px;
+	height: 76px;
+	top: 30%;
+	left: 40%;
+	border: 1px solid gray;
+	background: #e5e5e5 url(/images/login-footer.jpg) no-repeat center bottom;
+	padding-top: 0;
+}
+
+div.NewItems
+{
+	color: gray;
+	background-color: #e6e6e6;
+	position: fixed;
+	z-index: 1;
+	font-size: 14px;
+	width: 237px;
+	height: 320px;
 	top: 50px;
 	right: 50px;
-	border: 2px solid black;
+	border: 1px solid #757575;
+	text-align: left;
+	margin-top: 0;
+	opacity: 0.96;
+}
+
+textarea
+{
+	width: 230px;
+	height: 100px;
+	opacity: 0.45;
+	padding: 3px;
+	font-family: "Trajan Pro";
+	color: #363636;
+	background-color: #f5f5f5;
+	border: 1px solid #a0a0a0;
 }
