@@ -1,16 +1,17 @@
+
 body 
 {
 	font-family: verdana, helvetica, arial, sans-serif;
 	font-size: 10px;
 	text-align: left;
 	color: #424242;
-	background: url(/images/background.png);
+	background-color: #efefef;
 }
 
 input
 {
-	color: #e5eaed;
-	border: 1px solid #336300;
+	color: #000000;
+	border: 1px solid #000000;
 	background-image: url(/images/input.png);
 }
 
@@ -55,4 +56,20 @@ p
 table
 {
 	border: 1px dashed #d4d4d4;
+}
+
+div.login_pane
+{
+	color: gray;
+	background-color: silver;
+	position: fixed;
+	z-index: 1;
+	font-weight: bold;
+	font-size: 12px;
+	width: 200px;
+	height: 200px;
+	padding: 3px;
+	top: 50px;
+	right: 50px;
+	border: 2px solid black;
 }
