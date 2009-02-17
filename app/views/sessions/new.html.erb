@@ -10,7 +10,7 @@
 <%= check_box_tag 'remember_me' %></p>
 -->
 
-<p><%= submit_tag 'Log in', {:class => 'submit'} %></p>
+<p><%= button_to "Signup!", { :controller => :users, :action => :new },{ :class => 'signup'} %>
+ <%= submit_tag 'Log in', {:class => 'login'} %></p>
 <% end -%></div>
 
-Not a user?  <%= link_to "Signup!", { :controller => :users, :action => :new } %>

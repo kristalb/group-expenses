@@ -20,16 +20,34 @@ input
 	right: 2px;
 }
 
-input.submit
+input.login
 {
 	color: white;
 	border: 0 solid;
 	font: 10px "American Typewriter, Trajan Pro, Times New Roman";
-	opacity: 0;
-	width: 98%;
+	opacity: 0.71;
+	width: 50%;
 	background-color: #898989;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
 }
 	
+
+input.signup
+{
+	color: white;
+	border: 0 solid;
+	font: 10px "American Typewriter, Trajan Pro, Times New Roman";
+	opacity: 0.71;
+	width: 50%;
+	background-color: #898989;
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	
+}
+
 a:link 
 {
 	color: #e3e6dc;
@@ -76,7 +94,6 @@ div.Login
 	top: 30%;
 	left: 40%;
 	border: 1px solid gray;
-	background: #e5e5e5 url(/images/login-footer.jpg) no-repeat center bottom;
 	padding-top: 0;
 }
 
