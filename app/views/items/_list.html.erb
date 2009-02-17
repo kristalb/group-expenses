@@ -17,7 +17,7 @@
 	  <tr>
 		<td><%=h item.date %></td>    
 		<td><%=h item.title %></td>
-	    <td><%=h item.amount %></td>
+	    <td><%=h number_to_currency(item.amount/100.0) %></td>
 		<td><%=h item.type.to_s %></td>
 	    <td><%=h item.note %></td>
 		
