@@ -26,7 +26,7 @@
 		<% end %>
 	  </tr>
 	
-	  <% total += item.amount * item.type.weight / 100 %>
+	  <% if item.type then total += item.amount * item.type.weight / 100 %>
 	
 	<% end %>
 	</table>
