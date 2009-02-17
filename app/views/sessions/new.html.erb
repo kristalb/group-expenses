@@ -12,3 +12,5 @@
 
 <p><%= submit_tag 'Log in', {:class => 'submit'} %></p>
 <% end -%></div>
+
+Not a user?  <%= link_to "Signup!", { :controller => :users, :action => :new } %>
