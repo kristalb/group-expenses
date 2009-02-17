@@ -1,7 +1,7 @@
 
 body 
 {
-	font-family: trajan pro, verdana, helvetica, arial, sans-serif;
+	font-family: American Typewriter, Trajan Pro, Times New Roman;
 	font-size: 10px;
 	text-align: left;
 	color: #424242;
@@ -13,7 +13,7 @@ input
 	color: gray;
 	background-image: none;
 	border: 1px double gray;
-	font-family: trajan pro, verdana, helvetica, sans-serif;
+	font-family: American Typewriter, Trajan Pro, Times New Roman;
 	font-size: 10px;
 	background-color: #ececec;
 	position: absolute;
@@ -24,7 +24,7 @@ input.submit
 {
 	color: white;
 	border: 0 solid;
-	font: italic bold 10px "Trajan Pro";
+	font: 10px "American Typewriter, Trajan Pro, Times New Roman";
 	opacity: 0;
 	width: 98%;
 	background-color: #898989;
@@ -33,26 +33,25 @@ input.submit
 a:link 
 {
 	color: #e3e6dc;
-	font-variant: small-caps;
 	background-color: #797979;
 	border: 2px solid #c6ddb3;
-	font-style: italic;
 }
 
 h1 
 {
 	font-size: 20px;
 	color: gray;
-	font-weight: bold;
-	font-style: italic;
+	font-weight: normal;
+	font-style: normal;
 }
 
 h2 
 {
 	font-size: 18px;
 	color: gray;
-	font-style: italic;
-	font-variant: small-caps;
+	font-weight: normal;
+	font-style: normal;
+
 }
 
 p
@@ -71,7 +70,6 @@ div.Login
 	color: gray;
 	position: fixed;
 	z-index: 1;
-	font-weight: bold;
 	font-size: 10px;
 	width: 230px;
 	height: 76px;
@@ -105,7 +103,7 @@ textarea
 	height: 100px;
 	opacity: 0.45;
 	padding: 3px;
-	font-family: "Trajan Pro";
+	font-family: "American Typewriter, Trajan Pro, Times New Roman";
 	color: #363636;
 	background-color: #f5f5f5;
 	border: 1px solid #a0a0a0;
