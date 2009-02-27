@@ -9,18 +9,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090212070359) do
+ActiveRecord::Schema.define(:version => 20090217003153) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
     t.date     "date"
-    t.integer  "amount"
+    t.decimal  "amount",     :precision => 8, :scale => 2
     t.text     "note"
     t.string   "type"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "type_id"
+  end
+
+  create_table "transfers", :force => true do |t|
+    t.string   "name"
+    t.decimal  "amount",     :precision => 8, :scale => 2
+    t.integer  "giver_id"
+    t.integer  "taker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "types", :force => true do |t|
