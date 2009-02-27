@@ -3,7 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table  :items do |t|
       t.string    :title
       t.date      :date
-      t.integer   :amount
+      t.decimal   :amount, :precision => 8, :scale => 2
       t.text      :note
       t.string    :type
       t.integer   :user_id
