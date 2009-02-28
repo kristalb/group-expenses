@@ -1,7 +1,7 @@
 
 body 
 {
-	font-family: trajan pro, times new roman;
+	font-family: American Typewriter, Trajan Pro, Times New Roman;
 	font-size: 10px;
 	text-align: left;
 	color: #424242;
@@ -13,46 +13,63 @@ input
 	color: gray;
 	background-image: none;
 	border: 1px double gray;
-	font-family: trajan pro, verdana, helvetica, sans-serif;
+	font-family: American Typewriter, Trajan Pro, Times New Roman;
 	font-size: 10px;
 	background-color: #ececec;
 	position: absolute;
 	right: 2px;
 }
 
-input.submit
+input.login
 {
 	color: white;
 	border: 0 solid;
-	font: italic bold 10px "Trajan Pro";
-	opacity: 0;
-	width: 98%;
+	font: 10px "American Typewriter, Trajan Pro, Times New Roman";
+	opacity: 0.71;
+	width: 50%;
 	background-color: #898989;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
 }
 	
+
+input.signup
+{
+	color: white;
+	border: 0 solid;
+	font: 10px "American Typewriter, Trajan Pro, Times New Roman";
+	opacity: 0.71;
+	width: 50%;
+	background-color: #898989;
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	
+}
+
 a:link 
 {
 	color: #e3e6dc;
-	font-variant: small-caps;
 	background-color: #797979;
 	border: 2px solid #c6ddb3;
-	font-style: italic;
 }
 
 h1 
 {
 	font-size: 20px;
 	color: gray;
-	font-weight: bold;
-	font-style: italic;
+	font-weight: normal;
+	font-style: normal;
 }
 
 h2 
 {
 	font-size: 18px;
 	color: gray;
-	font-style: italic;
-	font-variant: small-caps;
+	font-weight: normal;
+	font-style: normal;
+
 }
 
 p
@@ -71,14 +88,12 @@ div.Login
 	color: gray;
 	position: fixed;
 	z-index: 1;
-	font-weight: bold;
 	font-size: 10px;
 	width: 230px;
 	height: 76px;
 	top: 30%;
 	left: 40%;
 	border: 1px solid gray;
-	background: #e5e5e5 url(/images/login-footer.jpg) no-repeat center bottom;
 	padding-top: 0;
 }
 
@@ -105,7 +120,7 @@ textarea
 	height: 100px;
 	opacity: 0.45;
 	padding: 3px;
-	font-family: "Trajan Pro";
+	font-family: "American Typewriter, Trajan Pro, Times New Roman";
 	color: #363636;
 	background-color: #f5f5f5;
 	border: 1px solid #a0a0a0;
