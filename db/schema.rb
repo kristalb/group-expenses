@@ -9,18 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090212070359) do
+ActiveRecord::Schema.define(:version => 20090304024854) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
     t.date     "date"
-    t.decimal  "amount",     :precision => 8, :scale => 2
+    t.decimal  "amount",      :precision => 8, :scale => 2
     t.text     "note"
     t.string   "type"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "type_id"
+    t.integer  "given_to_id"
   end
 
   create_table "types", :force => true do |t|
@@ -39,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20090212070359) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
-    t.integer  "given_to_id"
   end
 
 end
