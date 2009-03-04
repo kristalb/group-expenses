@@ -1,11 +1,8 @@
 <h1>Item Tally</h1>
-
-<% for user in users %>
-	<h2><%= user.login.titleize %></h2>
-	<% total = 0 %>
 	
 	<table>
 	  <tr>
+		<th>User</th>
 	    <th>Date</th>
 	    <th>Title</th>
 	    <th>Amount</th>
@@ -13,33 +10,30 @@
 	    <th>Note</th>
 	  </tr>
 
-	<% for item in items.find_all { |i| i.user.login == user.login } %>
+	<% total = {} %>
+	
+	<% for item in items %>
 	  <tr>
-		<td><%=h item.date %></td>    
+		<td><%=h item.user.login.titleize %></td>
+		<td><%=h item.date %></td>
 		<td><%=h item.title %></td>
 	    <td><%=h number_to_currency(item.amount) %></td>
 		<td><%=h item.type.to_s %></td>
 	    <td><%=h item.note %></td>
 		
-		<% if current_user.id == user.id then %>
+		<% if current_user.id == item.user.id then %>
 		    <td><%= link_to 'X', item, :confirm => 'Delete Item?', :method => :delete %></td>
 		<% end %>
 	  </tr>
 	
-	  <% 
-		if item.type then 
-			total += item.amount * item.type.weight / 100 
-		else
-			total += item.amount
-		end
-	   %>
+	  <% total[item.user.login] = 0 if total[item.user.login].blank? %>
+	  <% total[item.user.login] += item.amount * item.type.weight / 100 %>
 	
 	<% end %>
 	</table>
-	<h2>Total: <%=total%></h2>
 	
-<% end %>
-
+	<% total.each do |k,v| %>
+		<h3><%= k.titleize %>:<%= v %> <h3><br/>
+	<% end %>
+		
 <br />
-
-<%= link_to 'New item', new_item_path %>
