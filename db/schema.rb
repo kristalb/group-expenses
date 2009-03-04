@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090304000721) do
+ActiveRecord::Schema.define(:version => 20090212070359) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -21,15 +21,6 @@ ActiveRecord::Schema.define(:version => 20090304000721) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "type_id"
-  end
-
-  create_table "transfers", :force => true do |t|
-    t.string   "name"
-    t.decimal  "amount",     :precision => 8, :scale => 2
-    t.integer  "giver_id"
-    t.integer  "taker_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "types", :force => true do |t|
@@ -48,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20090304000721) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
+    t.integer  "given_to_id"
   end
 
 end

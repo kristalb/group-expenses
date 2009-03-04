@@ -36,6 +36,12 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.xml
   def create
+    
+    if params[:item][:type_id].split("_")[0] == "0" then
+      params[:item][:given_to_id] = params[:item][:type_id].split("_")[1]
+      params[:item][:type_id] = nil
+    end
+                
     @item = Item.new(params[:item])
     @item.user_id = login_from_session.id
 

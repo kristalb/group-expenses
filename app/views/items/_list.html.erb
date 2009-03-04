@@ -13,27 +13,36 @@
 	<% total = {} %>
 	
 	<% for item in items %>
-	  <tr>
+	  	<tr>
 		<td><%=h item.user.login.titleize %></td>
 		<td><%=h item.date %></td>
 		<td><%=h item.title %></td>
 	    <td><%=h number_to_currency(item.amount) %></td>
-		<td><%=h item.type.to_s %></td>
+		<td><%=h item.type_id == nil ? "Transfer:" + item.given_to.login.titleize : item.type.to_s %></td>
 	    <td><%=h item.note %></td>
-		
+	
 		<% if current_user.id == item.user.id then %>
 		    <td><%= link_to 'X', item, :confirm => 'Delete Item?', :method => :delete %></td>
 		<% end %>
-	  </tr>
-	
-	  <% total[item.user.login] = 0 if total[item.user.login].blank? %>
-	  <% total[item.user.login] += item.amount * item.type.weight / 100 %>
+	  	</tr>
+
+	  	<% total[item.user.login] = 0 if total[item.user.login].blank? %>
+		
+		<% if item.type.blank? %>
+			<% total[item.user.login] += item.amount %>
+		<% else %>
+	  		<% total[item.user.login] += item.amount * item.type.weight / 100 %>
+		<% end %>
+		
+		<% unless item.given_to.blank? %>
+			<% total[item.given_to.login] -= item.amount %>
+		<% end %>
 	
 	<% end %>
 	</table>
 	
 	<% total.each do |k,v| %>
-		<h3><%= k.titleize %>: <%= number_to_currency(v) %> <h3><br/>
+		<h3><%= k.titleize %>: <%= number_to_currency(v) %><h3>
 	<% end %>
 		
 <br />
