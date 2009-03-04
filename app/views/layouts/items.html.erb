@@ -6,6 +6,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>House Items: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'styles' %>
+  <%= auto_discovery_link_tag(:rss, {:controller => "items", :action => "feed", :format => "rss"})%>
 </head>
 <body>
 
