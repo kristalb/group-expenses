@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :types
 
+  map.connect 'items/feed', :controller => 'items', :action => 'feed', :format => 'rss'
   map.resources :items
 
   map.resources :users

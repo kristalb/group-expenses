@@ -79,4 +79,14 @@ class ItemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # Gather items for display in RSS feed
+  def feed
+    @items = Item.find(:all, :order => "date DESC")
+    
+    respond_to do |format|
+      format.html
+      format.rss  { render :layout => false }
+    end
+  end
 end
