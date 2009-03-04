@@ -33,7 +33,7 @@
 	</table>
 	
 	<% total.each do |k,v| %>
-		<h3><%= k.titleize %>:<%= v %> <h3><br/>
+		<h3><%= k.titleize %>: <%= number_to_currency(v) %> <h3><br/>
 	<% end %>
 		
 <br />
