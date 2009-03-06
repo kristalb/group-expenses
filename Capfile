@@ -19,7 +19,7 @@ namespace :deploy do
   
   desc "[internal] set ownership for deployment directory"
   task :set_owner, :except => { :no_release => true } do
-    run "chown -R www-data:www-data #{deploy_to}"
+    run "#{try_sudo} chown -R www-data:www-data #{deploy_to}"
   end
   
   after "deploy:setup", "deploy:set_owner"
