@@ -2,6 +2,9 @@ load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 Dir['vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
 load 'config/deploy'
 
+# add the 'db' directory to shared_children so that our database is preserved between releases
+shared_children.push('db')
+
 # customized tasks
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
