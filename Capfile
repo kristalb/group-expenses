@@ -25,7 +25,7 @@ namespace :deploy do
   desc "[internal] fix db directory and touch logs"
   task :fix_db_and_logs, :except => { :no_release => true } do
     symlink_db
-    touch_logs
+    touch_files
   end
   
   desc "[internal] creates symlink to shared db directory for current release"
@@ -33,11 +33,12 @@ namespace :deploy do
     run "rm -rf #{latest_release}/db && ln -s #{shared_path}/db #{latest_release}/db"
   end
   
-  desc "[internal] touch log files to ensure they exist"
-  task :touch_logs, :except => { :no_release => true } do
-    run "touch #{shared_path}/log/production.log && chmod g+w #{shared_path}/log/production.log"
+  desc "[internal] touch log and db files to ensure they exist"
+  task :touch_files, :except => { :no_release => true } do
+    run "touch #{shared_path}/log/production.log && touch #{shared_path}/db/production.sqlite3"
   end
   
   after "deploy:setup", "deploy:set_owner"
-  after "deploy:finalize_update", "deploy:fix_db_and_logs"
+  before "deploy:finalize_update", "deploy:fix_db_and_logs"
+  after "deploy:finalize_update", "deploy:set_owner"
 end
