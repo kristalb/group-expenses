@@ -22,5 +22,24 @@ namespace :deploy do
     run "#{try_sudo} chown -R www-data:www-data #{deploy_to}"
   end
   
+  desc "[internal] fix db directory and touch logs"
+  task :fix_db_and_logs, :except => { :no_release => true } do
+    symlink_db
+    touch_logs
+  end
+  
+  desc "[internal] creates symlink to shared db directory for current release"
+  task :symlink_db, :except => { :no_release => true } do
+    run "rm -rf db"
+    run "ln -s #{shared_path}/db #{latest_release}/db"
+  end
+  
+  desc "[internal] touch log files to ensure they exist"
+  task :touch_logs, :except => { :no_release => true } do
+    run "touch #{shared_path}/log/production.log"
+    run "chmod g+w #{shared_path}/log/production.log"
+  end
+  
   after "deploy:setup", "deploy:set_owner"
+  after "deploy:finalize_update", "deploy:fix_db_and_logs"
 end
