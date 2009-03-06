@@ -47,5 +47,7 @@ namespace :deploy do
   end
   
   after "deploy:setup", "deploy:set_owner"
+  after "deploy:update", "deploy:set_owner"
+  after "deploy:upload", "deploy:set_owner"
   before "deploy:finalize_update", "deploy:fix_db_and_logs"
 end
