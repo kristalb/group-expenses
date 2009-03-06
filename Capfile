@@ -30,14 +30,12 @@ namespace :deploy do
   
   desc "[internal] creates symlink to shared db directory for current release"
   task :symlink_db, :except => { :no_release => true } do
-    run "rm -rf db"
-    run "ln -s #{shared_path}/db #{latest_release}/db"
+    run "rm -rf db && ln -s #{shared_path}/db #{latest_release}/db"
   end
   
   desc "[internal] touch log files to ensure they exist"
   task :touch_logs, :except => { :no_release => true } do
-    run "touch #{shared_path}/log/production.log"
-    run "chmod g+w #{shared_path}/log/production.log"
+    run "touch #{shared_path}/log/production.log && chmod g+w #{shared_path}/log/production.log"
   end
   
   after "deploy:setup", "deploy:set_owner"
