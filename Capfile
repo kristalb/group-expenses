@@ -30,7 +30,7 @@ namespace :deploy do
   
   desc "[internal] creates symlink to shared db directory for current release"
   task :symlink_db, :except => { :no_release => true } do
-    run "rm -rf db && ln -s #{shared_path}/db #{latest_release}/db"
+    run "rm -rf #{latest_release}/db && ln -s #{shared_path}/db #{latest_release}/db"
   end
   
   desc "[internal] touch log files to ensure they exist"
