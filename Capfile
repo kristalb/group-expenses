@@ -22,7 +22,7 @@ namespace :deploy do
     run "#{try_sudo} chown -R www-data:www-data #{deploy_to}"
   end
   
-  desc "[internal] fix db directory and touch logs"
+  desc "[internal] fix db directory and logs, including ownership"
   task :fix_db_and_logs, :except => { :no_release => true } do
     symlink_db
     touch_files
@@ -33,12 +33,16 @@ namespace :deploy do
     run "rm -rf #{latest_release}/db && ln -s #{shared_path}/db #{latest_release}/db"
   end
   
-  desc "[internal] touch log and db files to ensure they exist"
+  desc "[internal] touch log and db files to ensure they exist and have proper permissions"
   task :touch_files, :except => { :no_release => true } do
-    run "touch #{shared_path}/log/production.log && touch #{shared_path}/db/production.sqlite3"
+    run <<-CMD
+      touch #{shared_path}/log/production.log &&
+      chmod g+w #{shared_path}/log/production.log &&
+      touch #{shared_path}/db/production.sqlite3 &&
+      chmod g+w #{shared_path}/db/production.sqlite3
+    CMD
   end
   
   after "deploy:setup", "deploy:set_owner"
   before "deploy:finalize_update", "deploy:fix_db_and_logs"
-  after "deploy:finalize_update", "deploy:set_owner"
 end
