@@ -28,9 +28,12 @@ namespace :deploy do
     touch_files
   end
   
-  desc "[internal] creates symlink to shared db directory for current release"
+  desc "[internal] creates symlink to shared db file for current release"
   task :symlink_db, :except => { :no_release => true } do
-    run "rm -rf #{latest_release}/db && ln -s #{shared_path}/db #{latest_release}/db"
+    run <<-CMD
+      rm -f #{latest_release}/db/production.sqlite3 &&
+      ln -s #{shared_path}/db/production.sqlite3 #{latest_release}/db/production.sqlite3
+    CMD
   end
   
   desc "[internal] touch log and db files to ensure they exist and have proper permissions"
