@@ -16,4 +16,11 @@ namespace :deploy do
     desc "#{t} task is a no-op with mod_rails"
     task t, :roles => :app do ; end
   end
+  
+  desc "[internal] set ownership for deployment directory"
+  task :set_owner, :except => { :no_release => true } do
+    run "chown -R www-data:www-data #{deploy_to}"
+  end
+  
+  after "deploy:setup", "deploy:set_owner"
 end
