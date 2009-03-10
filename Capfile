@@ -45,6 +45,14 @@ namespace :deploy do
     task :restart do
       run "#{try_sudo} /etc/init.d/apache2 restart"
     end
+    
+    desc "Updates and reloads apache configuration for application"
+    task :update_config do
+      run <<-CMD
+        #{try_sudo} cp #{current_release}/config/apache.conf /etc/apache2/sites-available/rails_apps &&
+        #{try_sudo} /etc/init.d/apache2 reload
+      CMD
+    end
   end
   
   namespace :rollback do
