@@ -40,6 +40,13 @@ namespace :deploy do
     CMD
   end
   
+  namespace :web do
+    desc "Restarts Apache web server"
+    task :restart do
+      run "#{try_sudo} /etc/init.d/apache2 restart"
+    end
+  end
+  
   namespace :rollback do
     desc <<-DESC
       [internal] Removes the most recently deployed release.
