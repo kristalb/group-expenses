@@ -31,18 +31,18 @@ namespace :deploy do
   desc "[internal] creates symlink to shared db file for current release"
   task :symlink_db, :except => { :no_release => true } do
     run <<-CMD
-      rm -f #{latest_release}/db/production.sqlite3 &&
-      ln -s #{shared_path}/db/production.sqlite3 #{latest_release}/db/production.sqlite3
+      rm -f #{latest_release}/db/#{rails_env}.sqlite3 &&
+      ln -s #{shared_path}/db/#{rails_env}.sqlite3 #{latest_release}/db/#{rails_env}.sqlite3
     CMD
   end
   
   desc "[internal] touch log and db files to ensure they exist and have proper permissions"
   task :touch_files, :except => { :no_release => true } do
     run <<-CMD
-      touch #{shared_path}/log/production.log &&
-      chmod g+w #{shared_path}/log/production.log &&
-      touch #{shared_path}/db/production.sqlite3 &&
-      chmod g+w #{shared_path}/db/production.sqlite3
+      touch #{shared_path}/log/#{rails_env}.log &&
+      chmod g+w #{shared_path}/log/#{rails_env}.log &&
+      touch #{shared_path}/db/#{rails_env}.sqlite3 &&
+      chmod g+w #{shared_path}/db/#{rails_env}.sqlite3
     CMD
   end
   
