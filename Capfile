@@ -40,6 +40,17 @@ namespace :deploy do
     CMD
   end
   
+  namespace :rollback do
+    desc <<-DESC
+      [internal] Removes the most recently deployed release.
+      This is called by the rollback sequence, and should rarely
+      (if ever) need to be called directly.
+    DESC
+    task :cleanup, :except => { :no_release => true } do
+      run "if [ `readlink #{current_path}` != #{current_release} ]; then #{try_sudo} rm -rf #{current_release}; fi"
+    end
+  end
+  
   after "deploy:setup", "deploy:set_owner"
   after "deploy:setup", "deploy:touch_files"
   after "deploy:update", "deploy:set_owner"
