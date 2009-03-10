@@ -5,11 +5,13 @@ load 'config/deploy'
 # add the 'db' directory to shared_children so that our database is preserved between releases
 shared_children.push('db')
 
+set :use_sudo, "true"
+
 # customized tasks
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "touch #{current_path}/tmp/restart.txt"
+    run "#{try_sudo} touch #{current_path}/tmp/restart.txt"
   end
 
   [:start, :stop].each do |t|
@@ -24,8 +26,8 @@ namespace :deploy do
   
   desc "[internal] fix db directory and logs, including ownership"
   task :fix_db_and_logs, :except => { :no_release => true } do
-    symlink_db
     touch_files
+    symlink_db
   end
   
   desc "[internal] creates symlink to shared db file for current release"
@@ -47,7 +49,8 @@ namespace :deploy do
   end
   
   after "deploy:setup", "deploy:set_owner"
+  after "deploy:setup", "deploy:fix_db_and_logs"
   after "deploy:update", "deploy:set_owner"
   after "deploy:upload", "deploy:set_owner"
-  before "deploy:finalize_update", "deploy:fix_db_and_logs"
+  before "deploy:finalize_update", "deploy:symlink_db"
 end
