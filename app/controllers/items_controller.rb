@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @users = User.find(:all)
     @user = login_from_session
     
-    @items = Item.find(:all)
+    @items = Item.find(:all, :order => "date DESC")
     @item = Item.new    
         
     respond_to do |format|
