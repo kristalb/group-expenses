@@ -5,10 +5,17 @@ class ItemsController < ApplicationController
   before_filter :login_required
   
   def index
+    @now = Time.now
+    @this_month = @now.month
+    @this_year = @now.year
+    
     @users = User.find(:all)
     @user = login_from_session
     
-    @items = Item.find(:all, :order => "date DESC")
+    @items = Item.find(:all, :order => "date DESC", 
+      :conditions => ["date >= :lower and date < :upper", 
+        {:lower => Date.new(@now.year, @now.month, 1), 
+         :upper => Date.new(@now.year, (@now.month+1%12), 1)}])
     @item = Item.new    
         
     respond_to do |format|
