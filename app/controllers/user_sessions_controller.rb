@@ -4,14 +4,14 @@ class UserSessionsController < ApplicationController
   before_filter :require_user, :only => :destroy
 
   def new
-    @session = UserSession.new
+    @user_session = UserSession.new
   end
 
   def create
-    @session = UserSession.new(params[:user_session])
-    if @session.save
+    @user_session = UserSession.new(params[:user_session])
+    if @user_session.save
       flash[:notice] = "Login successful!"
-      redirect_back_or_default users_url
+      redirect_back_or_default items_path
     else
       render :action => :new
     end

@@ -1,4 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+  map.root :controller => 'items'
+  
+  # Authentication
+  map.signup '/signup', :controller => 'users', :action => 'new'
+  map.login '/login', :controller => 'user_sessions', :action => 'new'
+  map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
+  
   map.resources :transfers
 
   map.resources :types
@@ -6,9 +13,9 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'items/feed', :controller => 'items', :action => 'feed', :format => 'rss'
   map.resources :items
 
-  map.resources :users
+  map.resources :user, :only => [:new, :create]
 
-  map.resource :session
+  map.resource :user_session
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -46,16 +53,9 @@ ActionController::Routing::Routes.draw do |map|
 
   # See how all your routes lay out with "rake routes"
 
-  # Authentication
-  map.signup '/signup', :controller => 'users', :action => 'new'
-  map.login '/login', :controller => 'user_sessions', :action => 'new'
-  map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
-
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-
-  map.connect '/', :controller => 'items'
 end

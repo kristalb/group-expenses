@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   
-  before_filter :login_required
+  before_filter :require_user
   
   def index
     @now = Time.now
@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     @this_year = @now.year
     
     @users = User.find(:all)
-    @user = login_from_session
+    @user = current_user
     
     @items = Item.find(:all, :order => "date DESC", 
       :conditions => ["date >= :lower and date < :upper", 

@@ -1,18 +1,19 @@
-<div class="Login"><% form_tag session_path do -%>
-<p><label for="login">Login</label>
-<%= text_field_tag 'login' %></p>
+<div class="Login"><% form_for @user_session, :url => user_session_path do |f| -%>
+<%= f.error_messages %>
 
-<p><label for="password">Password</label>
-<%= password_field_tag 'password' %></p>
+<p><%= f.label :login %>
+<%= f.text_field :login %></p>
+
+<p><%= f.label :password %>
+<%= f.password_field :password %></p>
 
 <!-- Uncomment this if you want this functionality
-<p><label for="remember_me">Remember me:</label>
-<%= check_box_tag 'remember_me' %></p>
+<p><%= f.check_box :remember_me %><%= f.label :remember_me %></p>
 -->
-
 <p>
+  
  <%= submit_tag 'Log in', {:class => 'login'} %><% end -%>
- <%= button_to "Signup!", { :controller => :users, :action => :new }, { :class => 'signup'} %>
+ <%= button_to "Signup!", signup_path, { :class => 'signup'} %>
 </p>
 </div>
 
