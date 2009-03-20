@@ -1,27 +1,39 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  before_filter :require_user, :only => [:new, :create]
   
-
-  # render new.rhtml
   def new
+    @user = User.new
   end
 
   def create
-    cookies.delete :auth_token
-    # protects against session fixation attacks, wreaks havoc with 
-    # request forgery protection.
-    # uncomment at your own risk
-    # reset_session
     @user = User.new(params[:user])
-    @user.save
-    if @user.errors.empty?
-      self.current_user = @user
-      redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!"
+    if @user.save
+      flash[:notice] = "Account registered!"
+      redirect_back_or_default users_url
     else
-      render :action => 'new'
+      render :action => :new
     end
   end
+  
+  def index
+    @users = User.find(:all)
+  end
 
+  def show
+    @user = @current_user
+  end
+
+  def edit
+    @user = @current_user
+  end
+
+  def update
+    @user = @current_user # makes our views "cleaner" and more consistent
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "Account updated!"
+      redirect_to user_url
+    else
+      render :action => :edit
+    end
+  end
 end
