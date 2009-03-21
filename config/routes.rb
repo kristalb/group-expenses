@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'items/feed', :controller => 'items', :action => 'feed', :format => 'rss'
   map.resources :items
 
-  map.resources :user, :only => [:new, :create]
+  map.resources :users, :only => [:new, :create]
 
   map.resource :user_session
 
