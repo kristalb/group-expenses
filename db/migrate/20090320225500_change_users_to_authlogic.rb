@@ -17,6 +17,9 @@ class ChangeUsersToAuthlogic < ActiveRecord::Migration
     end
   end
 
+  # While removing columns would usually destroy data and thus be irreversible, the columns
+  # removed in this case do not break the User model or any other functionality associated
+  # with it, so we can revert this migration safely by just re-adding the columns.
   def self.down
     change_table :users do |t|
       say "Rename password_salt to salt"
