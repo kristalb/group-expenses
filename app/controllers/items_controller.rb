@@ -12,11 +12,8 @@ class ItemsController < ApplicationController
     @users = User.find(:all)
     @user = login_from_session
     
-    @items = Item.find(:all, :order => "date DESC", 
-      :conditions => ["date >= :lower and date < :upper", 
-        {:lower => Date.new(@now.year, @now.month, 1), 
-         :upper => Date.new(@now.year, (@now.month+1%12), 1)}])
-    @item = Item.new    
+    @items = Item.find(:all, :order => "date DESC")
+    @item = Item.new
         
     respond_to do |format|
       format.html # index.html.erb
