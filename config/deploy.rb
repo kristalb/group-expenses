@@ -5,7 +5,7 @@ set :rails_env, "production"
 
 set :application, "house"
 set :repository, "git@nodoka:house.git"
-set :branch, "master"
+set :branch, "stable"
 set :deploy_to, "/var/www/rails/#{application}/#{rails_env}"
 set :deploy_via, :copy
 

@@ -1,4 +1,4 @@
-<h1>Item Tally</h1>
+<h1>Current Item Tally</h1>
 	
 	<table>
 	  <tr>
@@ -15,7 +15,7 @@
 	<% for item in items %>
 	  	<tr>
 		<td><%=h item.user.login.titleize %></td>
-		<td><%=h item.date %></td>
+		<td><%=h item.date.to_s(:long) %></td>
 		<td><%=h item.title %></td>
 	    <td><%=h number_to_currency(item.amount) %></td>
 		<td><%=h item.type_id == nil ? "Transfer:" + item.given_to.login.titleize : item.type.to_s %></td>

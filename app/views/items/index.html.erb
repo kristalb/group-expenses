@@ -1,4 +1,4 @@
 <%= link_to "Logout", {:controller => :logout } %>
 
-<%= render :partial => "list", :locals => { :items => @items, :users => @users } %>
+<%= render :partial => "list", :locals => { :items => @items, :users => @users, :now => @now } %>
 <%= render :partial => "new", :locals => { :item => @item } %>

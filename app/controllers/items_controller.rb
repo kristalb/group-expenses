@@ -5,11 +5,15 @@ class ItemsController < ApplicationController
   before_filter :login_required
   
   def index
+    @now = Time.now
+    @this_month = @now.month
+    @this_year = @now.year
+    
     @users = User.find(:all)
     @user = login_from_session
     
-    @items = Item.find(:all)
-    @item = Item.new    
+    @items = Item.find(:all, :order => "date DESC")
+    @item = Item.new
         
     respond_to do |format|
       format.html # index.html.erb
