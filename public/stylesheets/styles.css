@@ -1,91 +1,73 @@
-
-body 
-{
-	font-family: American Typewriter, Trajan Pro, Times New Roman;
+/*I fucking hate Myrna. A lot. Just saying. BTW have some basic styling crap. These comments brought to you by the letter I'M BLINDDDD and the number IT'S HORRIBLE*/
+body {
+	font-family: Verdana, Arial, sans-serif;
 	font-size: 10px;
 	text-align: left;
-	color: #424242;
-	background-color: #efefef;
-}
-
-input
-{
-	color: gray;
-	background-image: none;
-	border: 1px double gray;
-	font-family: American Typewriter, Trajan Pro, Times New Roman;
+	color: Black;
+	background-color: #ffffff;}
+h1 {
+	font-size: 20px;
+	color:  Black;
+	font-weight: normal;
+	font-style: normal;}
+h2 {
+	font-size: 18px;
+	color:  Black;
+	font-weight: normal;
+	font-style: normal;}
+p {
 	font-size: 10px;
-	background-color: #ececec;
-	position: absolute;
-	right: 2px;
-}
+	color: Black;}
+table, tr, td {
+	border: 1px solid #d4d4d4;}	
+a:link {
+	color: Black;
+	background-color: #797979;
+	border: 2px solid # Black;}
 
-input.login
-{
-	color: white;
+/*Die, die, die, have some form elements*/
+input {
+	color: Black;
+	background-image: none;
+	border: 1px single Black
+	font-family: Verdana, Arial, sans-serif;;
+	font-size: 10px;
+	background-color: #ffffff;
+	position: absolute;
+	right: 2px;}
+input.login {
+	color:  Black;
 	border: 0 solid;
-	font: 10px "American Typewriter, Trajan Pro, Times New Roman";
+	font: 10px "Verdana, Arial, sans-serif;";
 	opacity: 0.71;
 	width: 50%;
 	background-color: #898989;
 	position: absolute;
 	right: 0px;
-	bottom: 0px;
-}
-	
-
-input.signup
-{
-	color: white;
+	bottom: 0px;}
+input.signup {
+	color:  Black;
 	border: 0 solid;
-	font: 10px "American Typewriter, Trajan Pro, Times New Roman";
+	font: 10px "Verdana, Arial, sans-serif;";
 	opacity: 0.71;
 	width: 50%;
 	background-color: #898989;
 	position: absolute;
 	left: 0px;
-	bottom: 0px;
-	
-}
+	bottom: 0px;}
+textarea {
+	width: 230px;
+	height: 100px;
+	opacity: 0.45;
+	padding: 3px;
+	font-family: "Verdana, Arial, sans-serif;";
+	color: # Black;
+	background-color: #ffffff;
+	border: 1px solid #000000;}
 
-a:link 
-{
-	color: #e3e6dc;
-	background-color: #797979;
-	border: 2px solid #c6ddb3;
-}
-
-h1 
-{
-	font-size: 20px;
-	color: gray;
-	font-weight: normal;
-	font-style: normal;
-}
-
-h2 
-{
-	font-size: 18px;
-	color: gray;
-	font-weight: normal;
-	font-style: normal;
-
-}
-
-p
-{
-	font-size: 10px;
-	color: #787878;
-}
-
-table
-{
-	border: 1px dashed #d4d4d4;
-}
-
-div.Login
-{
-	color: gray;
+/*DIAF and here...Out, I lay this.*/
+div.Login {
+	color: Black;
 	position: fixed;
 	z-index: 1;
 	font-size: 10px;
@@ -93,13 +75,10 @@ div.Login
 	height: 76px;
 	top: 30%;
 	left: 40%;
-	border: 1px solid gray;
-	padding-top: 0;
-}
-
-div.NewItems
-{
-	color: gray;
+	border: 1px solid Black;
+	padding: 5px;}
+div.NewItems {
+	color: Black;
 	background-color: #e6e6e6;
 	position: fixed;
 	z-index: 1;
@@ -108,20 +87,22 @@ div.NewItems
 	height: 320px;
 	top: 50px;
 	right: 50px;
-	border: 1px solid #757575;
+	border: 1px solid # Black;
 	text-align: left;
 	margin-top: 0;
-	opacity: 0.96;
-}
-
-textarea
-{
-	width: 230px;
-	height: 100px;
-	opacity: 0.45;
-	padding: 3px;
-	font-family: "American Typewriter, Trajan Pro, Times New Roman";
-	color: #363636;
-	background-color: #f5f5f5;
-	border: 1px solid #a0a0a0;
+	opacity: 0.96;}
+div.SignUp {
+	color: Black;
+	position: fixed;
+	z-index: 1;
+	font-size: 10px;
+	width: 350px;
+	top: 30%;
+	left: 37%;
+	border: 0px;
+	padding: 15px;}
+div.Items {
+	position: fixed;
+	z-index: 2;
+	width
 }
