@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     if params[:type]
       @items = Item.find_by_type_name(params[:type])
     else
-      @items = Item.all
+      @items = Item.all(:order => "date DESC")
     end
 
     @item = Item.new
