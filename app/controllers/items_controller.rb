@@ -9,7 +9,8 @@ class ItemsController < ApplicationController
     @user = login_from_session
     
     if params[:type]
-      @items = Item.find_by_type_name(params[:type], :order => "date DESC")
+      @type = Type.find_by_name(params[:type])
+      @items = Item.find_all_by_type_id(@type, :order => "date DESC")
     else
       @items = Item.all(:order => "date DESC")
     end
