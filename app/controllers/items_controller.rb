@@ -5,15 +5,15 @@ class ItemsController < ApplicationController
   before_filter :login_required
   
   def index
-    @now = Time.now
-    @this_month = @now.month
-    @this_year = @now.year
-    
     @users = User.find(:all)
     @user = login_from_session
-        
-    @items = Item.find(:all, :order => "date DESC")
-    @items = @items.select{|x| x.type_id == params[:type].to_i } unless params[:type].blank?
+    
+    if params[:type]
+      @items = Item.find_by_type_name(params[:type])
+    else
+      @items = Item.all
+    end
+
     @item = Item.new
     
     @types = Type.all

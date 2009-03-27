@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'items/feed', :controller => 'items', :action => 'feed', :format => 'rss'
   map.resources :items
+  map.connect 'items/type/:type', :controller => 'items', :action => 'index'
 
   map.resources :users
   map.resource :session

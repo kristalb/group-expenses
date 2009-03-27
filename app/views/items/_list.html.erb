@@ -1,6 +1,6 @@
 <h1>Current Item Tally</h1>
 Filter by: <% for type in @types %>
-	<%= link_to type.to_s, { :controller => "items", :action => "index", :params => { :type => type.id } } %>
+	<%= link_to type.to_s, items_url + "/type/#{type.to_s}" %>
 <% end %>
 
 
@@ -16,7 +16,7 @@ Filter by: <% for type in @types %>
 
 	<% total = {} %>
 	
-	<% for item in items %>
+	<% for item in @items %>
 	  	<tr>
 		<td><%=h item.user.login.titleize %></td>
 		<td><%=h item.date.to_s(:long) %></td>
