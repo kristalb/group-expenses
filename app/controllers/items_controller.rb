@@ -11,9 +11,12 @@ class ItemsController < ApplicationController
     
     @users = User.find(:all)
     @user = login_from_session
-    
+        
     @items = Item.find(:all, :order => "date DESC")
+    @items = @items.select{|x| x.type_id == params[:type].to_i } unless params[:type].blank?
     @item = Item.new
+    
+    @types = Type.all
         
     respond_to do |format|
       format.html # index.html.erb

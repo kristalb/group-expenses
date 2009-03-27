@@ -1,5 +1,9 @@
 <h1>Current Item Tally</h1>
-	
+Filter by: <% for type in @types %>
+	<%= link_to type.to_s, { :controller => "items", :action => "index", :params => { :type => type.id } } %>
+<% end %>
+
+
 	<table>
 	  <tr>
 		<th>User</th>
@@ -41,8 +45,10 @@
 	<% end %>
 	</table>
 	
+	<% grand_total = total.values.inject(0){|sum,item| sum + item } %>
+	
 	<% total.each do |k,v| %>
-		<h3><%= k.titleize %>: <%= number_to_currency(v) %><h3>
+		<h3><%= k.titleize %>: <%= number_to_currency(v) %> (<%= (100 * v / grand_total).to_i %>%)<h3>
 	<% end %>
 		
 <br />
