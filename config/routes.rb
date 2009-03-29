@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'items/type/:type', :controller => 'items', :action => 'index'
 
   map.edit_user 'profile/modify', :controller => 'users', :action => 'edit'
+  map.connect 'users/:login/items', :controller => 'items', :action => 'index'
   map.resource :account, :controller => "users", :path_names => {:edit => "modify"}
   map.resources :users, :only => [:new, :create, :edit, :update]
 

@@ -11,6 +11,8 @@ class ItemsController < ApplicationController
     if params[:type]
       @type = Type.find_by_name(params[:type])
       @items = Item.find_all_by_type_id(@type, :order => "date DESC")
+    elsif params[:login]
+      @items = Item.find_all_by_user_id(User.find_by_login(params[:login]))
     else
       @items = Item.all(:order => "date DESC")
     end
