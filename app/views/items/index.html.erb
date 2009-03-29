@@ -1,4 +1,6 @@
 <%= link_to "Logout", {:controller => :logout } %>
 
+<p><%= link_to "Edit My Account", edit_account_path %>
+
 <%= render :partial => "list", :locals => { :items => @items, :users => @users, :now => @now } %>
 <%= render :partial => "new", :locals => { :item => @item } %>
