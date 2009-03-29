@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
     end
                 
     @item = Item.new(params[:item])
-    @item.user_id = login_from_session.id
+    @item.user_id = current_user.id
 
     respond_to do |format|
       if @item.save
