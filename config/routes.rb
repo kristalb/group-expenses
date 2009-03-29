@@ -1,4 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+  map.root :controller => 'items'
+  
+  # Authentication
+  map.signup '/signup', :controller => 'users', :action => 'new'
+  map.login '/login', :controller => 'user_sessions', :action => 'new'
+  map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
+  
   map.resources :transfers
   map.resources :types
 
@@ -6,13 +13,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :items
   map.connect 'items/type/:type', :controller => 'items', :action => 'index'
 
-  map.resources :users
-  map.resource :session
+  map.resources :users, :only => [:new, :create]
 
-  # Authentication
-  map.signup '/signup', :controller => 'users', :action => 'new'
-  map.login '/login', :controller => 'sessions', :action => 'new'
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.resource :user_session, :as => "session"
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should

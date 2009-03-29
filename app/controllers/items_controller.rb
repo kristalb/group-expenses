@@ -2,11 +2,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   
-  before_filter :login_required
+  before_filter :require_user
   
   def index
     @users = User.find(:all)
-    @user = login_from_session
+    @user = current_user
     
     if params[:type]
       @type = Type.find_by_name(params[:type])
