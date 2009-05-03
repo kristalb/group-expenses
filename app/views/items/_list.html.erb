@@ -15,6 +15,7 @@ Filter by: <% for type in @types %>
 	  </tr>
 
 	<% total = {} %>
+	<% User.all.each { |u| total[u.login] = 0 } %>
 	
 	<% for item in @items %>
 	  	<tr>
@@ -29,8 +30,6 @@ Filter by: <% for type in @types %>
 		    <td><%= link_to 'X', item, :confirm => 'Delete Item?', :method => :delete %></td>
 		<% end %>
 	  	</tr>
-
-	  	<% total[item.user.login] = 0 if total[item.user.login].blank? %>
 		
 		<% if item.type.blank? %>
 			<% total[item.user.login] += item.amount %>
@@ -39,6 +38,7 @@ Filter by: <% for type in @types %>
 		<% end %>
 		
 		<% unless item.given_to.blank? %>
+		  <% debugger %>
 			<% total[item.given_to.login] -= item.amount %>
 		<% end %>
 	
