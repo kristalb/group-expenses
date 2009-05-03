@@ -38,7 +38,6 @@ Filter by: <% for type in @types %>
 		<% end %>
 		
 		<% unless item.given_to.blank? %>
-		  <% debugger %>
 			<% total[item.given_to.login] -= item.amount %>
 		<% end %>
 	
