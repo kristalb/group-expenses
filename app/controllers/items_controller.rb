@@ -2,18 +2,24 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   
-  before_filter :login_required
+  before_filter :require_user
   
   def index
-    @now = Time.now
-    @this_month = @now.month
-    @this_year = @now.year
-    
     @users = User.find(:all)
-    @user = login_from_session
+    @user = current_user
     
-    @items = Item.find(:all, :order => "date DESC")
+    if params[:type]
+      @type = Type.find_by_name(params[:type])
+      @items = Item.find_all_by_type_id(@type, :order => "date DESC")
+    elsif params[:login]
+      @items = Item.find_all_by_user_id(User.find_by_login(params[:login]))
+    else
+      @items = Item.all(:order => "date DESC")
+    end
+
     @item = Item.new
+    
+    @types = Type.all
         
     respond_to do |format|
       format.html # index.html.erb
@@ -47,7 +53,7 @@ class ItemsController < ApplicationController
     end
                 
     @item = Item.new(params[:item])
-    @item.user_id = login_from_session.id
+    @item.user_id = current_user.id
 
     respond_to do |format|
       if @item.save
