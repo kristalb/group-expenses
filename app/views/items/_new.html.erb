@@ -1,30 +1,40 @@
-<div class="NewItems"><h1>New item</h1>
+<div class="NewItems">
+<h1>New Item</h1>
 
-<% form_for(item) do |f| %>
-  <%= f.error_messages %>
+  <div class="feature">
+    <% form_for(item) do |f| %>
+      <%= f.error_messages %>
+        <ul>
+          <li>
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+          </li>
+          <li>
+            <%= f.label :amount %>
+            <%= f.text_field :amount %>
+          </li>
+          <li>
+            <%= f.label :type %>
+            <%= f.select :type_id, Type.all.collect{|t| [t.name, t.id]} + \
+        		User.all.collect{|t| ["Transfer:" + t.login.titleize, "0_" + t.id.to_s]} %>
+          </li>
+          <li>
+            <%= f.date_select :date %>
+          </li>
+          <li>
+            <%= f.submit "Create" %>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <%= f.text_area :note %>
+          </li>
+          <li id="NoteText">
+            <%= f.label :note %>
+          </li>
+        </ul>
 
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :amount %>
-    <%= f.text_field :amount %>
-  </p>
-  <p>
-    <%= f.label :type %>
-    <%= f.select :type_id, Type.all.collect{|t| [t.name, t.id]} + \
-		User.all.collect{|t| ["Transfer:" + t.login.titleize, "0_" + t.id.to_s]} %>
-  </p>
-  <p>
-    <%= f.label :note %><br />
-    <%= f.text_area :note %>
-  </p>
-  <p>
-    <%= f.date_select :date %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
+        
+    <% end %>
+  </div>
 </div>

@@ -8,9 +8,10 @@
   <%= stylesheet_link_tag 'styles' %>
 </head>
 <body>
-
+<div id="wrapper">
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield  %>
+</div>
 </body>
 </html>

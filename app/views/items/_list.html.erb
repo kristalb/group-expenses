@@ -1,53 +1,59 @@
-<h1>Current Item Tally</h1>
-Filter by: <% for type in @types %>
-	<%= link_to type.to_s, items_url + "/type/#{type.to_s}" %>
-<% end %>
+<div class="CurrentItems">
+    <h1>Current Item Tally</h1>
+    <h2>Filter by: <% for type in @types %>
+    	<%= link_to type.to_s, items_url + "/type/#{type.to_s}" %>
+    <% end %></h2>
+    <div class="ItemList">
 
 
-	<table>
-	  <tr>
-		<th>User</th>
-	    <th>Date</th>
-	    <th>Title</th>
-	    <th>Amount</th>
-		<th>Type</th>
-	    <th>Note</th>
-	  </tr>
+    	<table>
+    	  <tr>
+    		<th>User</th>
+    	    <th>Date</th>
+    	    <th>Title</th>
+    	    <th>Amount</th>
+    		<th>Type</th>
+    	    <th>Note</th>
+    	  </tr>
 
-	<% total = {} %>
-	<% User.all.each { |u| total[u.login] = 0 } %>
+    	<% total = {} %>
+    	<% User.all.each { |u| total[u.login] = 0 } %>
 	
-	<% for item in @items %>
-	  	<tr>
-		<td><%=h item.user.login.titleize %></td>
-		<td><%=h item.date.to_s(:long) %></td>
-		<td><%=h item.title %></td>
-	    <td><%=h number_to_currency(item.amount) %></td>
-		<td><%=h item.type_id == nil ? "Transfer:" + item.given_to.login.titleize : item.type.to_s %></td>
-	    <td><%=h item.note %></td>
+    	<% for item in @items %>
+    	  	<tr>
+    		<td><%=h item.user.login.titleize %></td>
+    		<td><%=h item.date.to_s(:long) %></td>
+    		<td><%=h item.title %></td>
+    	    <td><%=h number_to_currency(item.amount) %></td>
+    		<td><%=h item.type_id == nil ? "Transfer:" + item.given_to.login.titleize : item.type.to_s %></td>
+    	    <td id="ItemNote"><%=h item.note %></td>
 	
-		<% if current_user.id == item.user.id then %>
-		    <td><%= link_to 'X', item, :confirm => 'Delete Item?', :method => :delete %></td>
-		<% end %>
-	  	</tr>
+    		<% if current_user.id == item.user.id then %>
+    		    <td><%= link_to 'X', item, :confirm => 'Delete Item?', :method => :delete %></td>
+    		<% end %>
+    	  	</tr>
 		
-		<% if item.type.blank? %>
-			<% total[item.user.login] += item.amount %>
-		<% else %>
-	  		<% total[item.user.login] += item.amount * item.type.weight / 100 %>
-		<% end %>
+    		<% if item.type.blank? %>
+    			<% total[item.user.login] += item.amount %>
+    		<% else %>
+    	  		<% total[item.user.login] += item.amount * item.type.weight / 100 %>
+    		<% end %>
 		
-		<% unless item.given_to.blank? %>
-			<% total[item.given_to.login] -= item.amount %>
-		<% end %>
+    		<% unless item.given_to.blank? %>
+    			<% total[item.given_to.login] -= item.amount %>
+    		<% end %>
 	
-	<% end %>
-	</table>
+    	<% end %>
+    	</table>
+    	</div>
+    	<div class="totals">
 	
-	<% grand_total = total.values.inject(0){|sum,item| sum + item } %>
+    	<% grand_total = total.values.inject(0){|sum,item| sum + item } %>
 	
-	<% total.each do |k,v| %>
-		<h3><%= k.titleize %>: <%= number_to_currency(v) %> (<%= (100 * v / grand_total).to_i %>%)<h3>
-	<% end %>
+    	<% total.each do |k,v| %>
+    		<p><%= k.titleize %>: <%= number_to_currency(v) %> (<%= (100 * v / grand_total).to_i %>%)<p>
+    	<% end %>
 		
-<br />
+      <br />
+      </div>
+</div>

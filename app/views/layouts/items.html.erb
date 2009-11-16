@@ -9,10 +9,10 @@
   <%= auto_discovery_link_tag(:rss, {:controller => "items", :action => "feed", :format => "rss"})%>
 </head>
 <body>
-
+<div id="wrapper">
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield  %>
-
+</div>
 </body>
 </html>
